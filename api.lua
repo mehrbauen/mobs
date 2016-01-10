@@ -4,6 +4,7 @@ mobs.mod = "redo"
 
 -- Load settings
 local damage_enabled = minetest.setting_getbool("enable_damage")
+local monsters_peaceful = minetest.setting_getbool("mobs_monsters_peaceful")
 local peaceful_only = minetest.setting_getbool("only_peaceful_mobs")
 local disable_blood = minetest.setting_getbool("mobs_disable_blood")
 local creative = minetest.setting_getbool("creative_mode")
@@ -896,6 +897,7 @@ minetest.register_entity(name, {
 		-- find someone to attack
 		if self.type == "monster"
 		and damage_enabled
+		and not monsters_peaceful
 		and self.state ~= "attack"
 		and not day_docile(self) then
 
